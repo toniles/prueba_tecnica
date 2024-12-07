@@ -1,0 +1,146 @@
+/* 
+   ======================================================
+   Base CSS template with light/dark theme and variables
+   ======================================================
+   - Incluye:
+     * Reset básico
+     * Paleta de colores estándar en :root
+     * Variables de tipografía
+     * Estilos mínimos para elementos HTML comunes
+     * Modo claro y oscuro mediante [data-theme]
+*/
+
+/* Reset CSS básico */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html, body, h1, h2, h3, h4, h5, h6,
+p, ul, li, figure, figcaption, blockquote, dl, dd {
+  margin: 0;
+  padding: 0;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+               Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  line-height: 1.5;
+  font-size: 16px;
+  min-height: 100vh;
+}
+
+img, picture, video, canvas, svg {
+  display: block;
+  max-width: 100%;
+}
+
+button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: inherit;
+}
+
+/* 
+   ======================================================
+   Definición de variables
+   ======================================================
+   Definimos las variables en :root para el modo claro por defecto.
+   Para el modo oscuro, utilizamos [data-theme="dark"] para sobreescribir.
+*/
+
+:root {
+  /* Colores principales */
+  --color-bg: #ffffff;
+  --color-fg: #1a1a1a;
+  --color-accent: #0077ff;
+  --color-muted: #f0f0f0;
+  --color-border: #e0e0e0;
+
+  /* Tipografías */
+  --font-body: system-ui, sans-serif;
+  --font-size-base: 16px;
+  --line-height-base: 1.5;
+
+  /* Espaciado */
+  --spacing-xs: 0.25rem;
+  --spacing-sm: 0.5rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 2rem;
+
+  /* Transiciones */
+  --transition-speed: 0.3s;
+}
+
+[data-theme="dark"] {
+  --color-bg: #1a1a1a;
+  --color-fg: #ffffff;
+  --color-accent: #66aaff;
+  --color-muted: #2a2a2a;
+  --color-border: #333333;
+}
+
+/* 
+   ======================================================
+   Estilos Globales
+   ======================================================
+*/
+
+body {
+  background-color: var(--color-bg);
+  color: var(--color-fg);
+  font-family: var(--font-body);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-base);
+  transition: background-color var(--transition-speed), color var(--transition-speed);
+  padding: var(--spacing-md);
+}
+
+a {
+  color: var(--color-accent);
+  text-decoration: none;
+  transition: color var(--transition-speed);
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+hr {
+  border: none;
+  border-top: 1px solid var(--color-border);
+  margin: var(--spacing-md) 0;
+}
+
+ul, ol {
+  list-style-position: inside;
+  margin-left: var(--spacing-md);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: bold;
+  margin-bottom: var(--spacing-sm);
+  line-height: 1.2;
+}
+
+p, ul, ol, blockquote, figure, table {
+  margin-bottom: var(--spacing-md);
+}
+
+/* Botón para alternar el tema */
+.theme-toggle-btn {
+  padding: var(--spacing-sm) var(--spacing-md);
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+  background-color: var(--color-muted);
+  color: var(--color-fg);
+  transition: background-color var(--transition-speed), color var(--transition-speed);
+}
+
+.theme-toggle-btn:hover {
+  background-color: var(--color-border);
+}
